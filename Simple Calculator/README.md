@@ -15,7 +15,7 @@ It supports the following operations:
 - Implements number parsing and viewing using only registers and stack logic.
 
 ### 🔧 Requirements:
-- [emu8086](http://www.emu8086.com/) or any other x86 real-mode emulator.
+- [emu8086](https://emu8086-microprocessor-emulator.en.softonic.com/) or any other x86 real-mode emulator.
 - Windows or DOS-compatible system (or DOSBox for Linux/macOS users).
 
 ### ▶️ How to Run:
