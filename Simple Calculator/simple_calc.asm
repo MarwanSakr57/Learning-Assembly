@@ -8,7 +8,7 @@ msg2: db 0dh,0ah,"Enter First Number : $"
 msg3: db 0dh,0ah,"Enter Second Number : $" 
 msg4: db 0dh,0ah,"Enter First Number : $"  
 msg5: db 0dh,0ah,"RESULT = $"
-msg6: db 0dh,0ah,"Press any key to continue ! $" 
+msg6: db 0dh,0ah,"Exiting..... $" 
 msg7: db 0dh,0ah,"Done!",0dh,0ah,"(1)Return to main menu",0dh,0ah,"(2)Exit",0dh,0ah,"$" 
 msgWarn: db 0dh,0ah,"Invalid input,try again! $"
 
@@ -87,9 +87,9 @@ Exit:
             mov ah,9
             mov dx, offset msg6     ; Show exit prompt
             int 21h
-            mov ah,0
-            int 16h                 ; Wait for key press
-            ret
+            mov ah,4Ch
+            int 21h
+
 
 ; ===== View: Print number stored in DX =====
 View:
@@ -139,7 +139,7 @@ FormNo:
             dec cx
             cmp cx,0
             jne FormNo             ; Repeat if more digits
-            ret
+            
 
 ; ===== ViewNo: Print single digit in AX =====
 ViewNo:
