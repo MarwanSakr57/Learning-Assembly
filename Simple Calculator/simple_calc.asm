@@ -123,24 +123,6 @@ InputNo:
             inc cx                  ; Increase digit count
             jmp InputNo
 
-; ===== FormNo: Build full number from digits =====
-FormNo:
-            pop ax
-            push dx
-            mul bx                 ; Multiply digit by its place value
-            pop dx
-            add dx,ax              ; Add to final result
-            mov ax,bx
-            mov bx,10              ; Increase place value (1 -> 10 -> 100...)
-            push dx
-            mul bx
-            pop dx
-            mov bx,ax              ; Store updated place value
-            dec cx
-            cmp cx,0
-            jne FormNo             ; Repeat if more digits
-            
-
 ; ===== ViewNo: Print single digit in AX =====
 ViewNo:
             push ax
@@ -152,6 +134,10 @@ ViewNo:
             pop dx
             pop ax
             ret
+
+            
+
+
 
 ; ===== Subtraction =====
 Subtract:
@@ -239,6 +225,22 @@ Divide:
             pop dx
             mov cx,10000
             call View
-            jmp Retry
+            jmp Retry   
+            ; ===== FormNo: Build full number from digits =====
+FormNo:
+            pop ax
+            push dx
+            mul bx                 ; Multiply digit by its place value
+            pop dx
+            add dx,ax              ; Add to final result
+            mov ax,bx
+            mov bx,10              ; Increase place value (1 -> 10 -> 100...)
+            push dx
+            mul bx
+            pop dx
+            mov bx,ax              ; Store updated place value
+            dec cx
+            cmp cx,0
+            jne FormNo             ; Repeat if more digits
 
 ret
